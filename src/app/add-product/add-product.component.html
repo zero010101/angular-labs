@@ -1,0 +1,9 @@
+<form (submit)="onChange([name.value, description.value])">
+    <div class="form-group">
+            <input type="text" placeholder="Название товара" class="form-control" #name>
+            <input type="text" placeholder="Описание товара" class="form-control" #description>
+            <div class="container">
+                <button type="submit" class="btn btn-success">Add Product</button>
+            </div> 
+    </div>
+</form>

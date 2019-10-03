@@ -1,0 +1,26 @@
+<div class="container">
+        
+    <h2>Товары</h2>
+    <div class="alert alert-success">
+        <ol>
+            <li *ngFor='let product of products'>
+                <p><strong>Название: </strong>{{product.name}}</p>
+                <p><small><strong>Описание: </strong>{{product.description}}</small></p>
+                <button class="btn btn-danger btn-sm" (click)="edit()">Edit</button>
+                <form *ngIf="isEdit">
+                    <h4>Редактированеи товара</h4>
+                    <div class="form-group">                            
+                        <input type="text" placeholder="Название товара" 
+                        class="form-control" [(ngModel)]="product.name" name="name">
+                        <input type="text" placeholder="Описание товара" 
+                        class="form-control" [(ngModel)]="product.description" name="description">
+                    </div>
+                </form>
+            </li>
+        </ol>
+    </div>
+    <app-add-product [products]="products" (onadd)="addProduct($event)"></app-add-product>
+     
+</div>
+
+
