@@ -1,26 +1,39 @@
 <div class="container">
-        
+    
+    <app-greeting [greetingTmpl]="greetingTmpl"></app-greeting>
+    <button class="my-lg-2 btn btn-danger btn-sm" (click)="greeting.changeColor()">Press me</button>
+
+    <ng-template #greetingTmpl>
+        <h1 appBold>Хай! Добро пожаловать на главную страницу :)</h1>
+    </ng-template>
+
     <h2>Товары</h2>
     <div class="alert alert-success">
         <ol>
-            <li *ngFor='let product of products'>
-                <p><strong>Название: </strong>{{product.name}}</p>
-                <p><small><strong>Описание: </strong>{{product.description}}</small></p>
-                <button class="btn btn-danger btn-sm" (click)="edit()">Edit</button>
-                <form *ngIf="isEdit">
-                    <h4>Редактированеи товара</h4>
+            <li class="my-lg-2" *ngFor='let product of products'>
+                <p><strong>Название: </strong>{{product.name | nullableString | uppercase}}</p>
+                <p><small><strong>Цена: </strong>{{product.price | nullablePrice | currency}}</small></p>
+                <p><small><strong>Описание: </strong>{{product.description | nullableString | lowercase}}</small></p>
+                <p><small><strong>Дата создания: </strong>{{ product.date | date : 'MMM d, y, HH:mm'}}</small></p>
+                <button *ngIf="!isEdit; else toEdit" class="btn btn-danger btn-sm" (click)="edit()">Edit</button>
+                <ng-template #toEdit>
+                    <h4>Редактирование товара</h4>
                     <div class="form-group">                            
                         <input type="text" placeholder="Название товара" 
-                        class="form-control" [(ngModel)]="product.name" name="name">
+                        class="my-lg-2 col-md-4 form-control" [(ngModel)]="product.name" name="name">
+                        <input type="text" placeholder="Цена товара" 
+                        class="my-lg-2 col-md-4 form-control" [(ngModel)]="product.price" name="price">
                         <input type="text" placeholder="Описание товара" 
-                        class="form-control" [(ngModel)]="product.description" name="description">
+                        class="my-lg-2 col-md-4 form-control" [(ngModel)]="product.description" name="description">
                     </div>
-                </form>
+                    <button class="btn btn-danger btn-sm" (click)="edit()">Cansel</button>
+                </ng-template>
             </li>
         </ol>
     </div>
-    <app-add-product [products]="products" (onadd)="addProduct($event)"></app-add-product>
-     
+    <app-add-product [products]="products" (onadd)="addProduct($event)">
+        <h2>Добавить товар</h2>
+    </app-add-product>
 </div>
 
 

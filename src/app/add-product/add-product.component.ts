@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { Product } from '../models/product';
 
 
@@ -11,6 +11,8 @@ export class AddProductComponent implements OnInit {
 
   @Input() products: Product[] = [];
   @Output() onadd: EventEmitter<any> = new EventEmitter<any>();
+
+  isChanged = false;
 
   constructor() { }
 

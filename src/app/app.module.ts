@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AboutComponent } from './about/about.component';
+import { NullableStringPipe } from './shared/nullable-string.pipe';
+import { NullablePricePipe } from './shared/nullable-price.pipe';
+import { GreetingComponent } from './greeting/greeting.component';
+import { BoldDirective } from './shared/bold.directive';
+
+
 
 
 @NgModule({
@@ -14,7 +20,11 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     HomeComponent,
     AddProductComponent,
-    AboutComponent
+    AboutComponent,
+    NullableStringPipe,
+    NullablePricePipe,
+    GreetingComponent,
+    BoldDirective
   ],
   imports: [
     BrowserModule,
