@@ -1,0 +1,89 @@
+<button type="button" class="__btn" (click)="openModal(template)">Edit</button>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit product</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"
+                    class="form-control"
+                    id="name"
+                    formControlName="name">
+            <div class="not-valid" *ngIf="productForm.controls.name.hasError('required')">
+              Name is required
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control"
+                    id="type"
+                    formControlName="type">
+              <option *ngFor="let type of types"
+                      [value]="type">
+                {{ type }}      
+              </option>
+            </select>
+            <div class="not-valid" *ngIf="productForm.controls.type.hasError('required')">
+              Type is required
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number"
+                    class="form-control"
+                    id="price"
+                    formControlName="price">
+            <div class="not-valid" *ngIf="productForm.controls.price.hasError('required')">
+              Price is required
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text"
+                    class="form-control"
+                    id="description"
+                    formControlName="description">
+            <div class="not-valid" *ngIf="productForm.controls.description.hasError('required')">
+              Description is required
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="second_hand">Second hand</label>
+            <input type="checkbox"
+                    class="form-control"
+                    id="second_hand"
+                    formControlName="isSecondHand">
+          </div>
+    
+          <div formArrayName="photoLinks"  class="form-group" >
+            <label >PhotoLinks</label>
+            <div class="input-group" *ngFor="let photoLink of productForm.controls['photoLinks'].controls; let i = index">  
+              <input type="text"
+                      class="form-control"
+                      id="photo_link"
+                      [formControlName]="i">
+              <div class="input-group-append">
+                  <button type="button" class="btn btn-danger" (click)="deletePhotoLink(i)">-</button>
+              </div>
+            </div>
+            <button type="button" class="btn btn-default" (click)="addPhotoLink()">+</button>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="submit" class="btn btn-success">Confirm</button>
+              <button type="reset" class="btn btn-danger" (click)="onCansel()">Cancle</button>
+            </div>
+          </div>
+        </form> 
+  </div>
+</ng-template>

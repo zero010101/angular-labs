@@ -1,0 +1,27 @@
+<div class="card" style="width: 18rem; height: 30rem;">
+  <carousel style="height: 15rem;">
+    <slide *ngFor="let photoLink of product.photoLinks" style="height: 15rem;">
+      <img [src]="photoLink" style="display: block; width: 100%;">
+    </slide>
+  </carousel>
+    <div class="card-img-overlay">
+      <div class="row justify-content-end px-3">
+        <div class="btn-group" dropdown >
+          <button id="button-basic" dropdownToggle type="button" class="__btn"
+                  aria-controls="dropdown-animated">
+                  •••
+            <span class="caret"></span>      
+          </button>
+          <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-animated">
+            <li role="menuitem"><a class="dropdown-item"><app-edit-product></app-edit-product></a></li>
+            <li role="menuitem"><a class="dropdown-item"><app-delete-product></app-delete-product></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="card-deck">
+    <div *ngFor="let product of products" style="padding: 3rem;">
+            <app-product [product]="product"></app-product>
+    </div>
+</div>
+<div>
+    <app-add-product></app-add-product>
+</div>
