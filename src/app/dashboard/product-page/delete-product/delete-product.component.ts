@@ -22,7 +22,7 @@ export class DeleteProductComponent implements OnInit {
   }
 
   confirm(): void {
-    this.productService.delete(this.product);
+    //this.productService.delete(this.product);
     this.modalRef.hide();
   }
 

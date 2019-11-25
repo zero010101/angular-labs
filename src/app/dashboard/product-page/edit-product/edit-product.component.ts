@@ -50,7 +50,7 @@ export class EditProductComponent implements OnInit, OnChanges {
     }
 
     const product = this.productForm.value as Product;
-    this.productService.edit(product);
+    //this.productService.edit(product);
     this.onCansel();
   }
 

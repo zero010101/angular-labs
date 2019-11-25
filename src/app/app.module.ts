@@ -13,6 +13,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AddProductComponent } from './dashboard/product-page/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductPageComponent } from './dashboard/product-page/product-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductPageComponent } from './dashboard/product-page/product-page.comp
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
     }
 
     const product = this.productForm.value as Product;
-    this.productService.add(product);
+    //this.productService.add(product);
     this.onCansel();
   }
 
